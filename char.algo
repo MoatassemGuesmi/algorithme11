@@ -1,0 +1,17 @@
+ALGORITHM algorithm_name
+VAR
+    nbrChar,nbrVoy,nbrwor:=INTEGER
+    ch:=CHAR
+BEGIN
+read(ch)
+    WHILE (ch<>".") DO
+        nbrChar=nbrChar+1
+        IF (ch=" ") THEN
+            nbrwor=nbrwor+1
+        END_IF
+        IF (ch="a" ,or ch="e", or ch="i" ,or ch="u" ,or ch="o" ,or ch="y" ) THEN
+            nbrVoy=nbrVoy+1
+        END_IF
+    END_WHILE
+    write(nbrChar+1,nbrVoy,nbrwor+1)
+END

@@ -1,0 +1,36 @@
+ALGORITHM date
+VAR
+    month,day,year,date:INTEGER;
+    cond:BOOLEAN:=true;
+    chaine:STRING;
+BEGIN
+    REPEAT
+        read(date);
+        day:=date div 10000;
+        month:=(date mod 10000)div 100;
+        year:=(date % 100 );
+    IF (month>12 or month<1 or day<1 or day > 31) THEN
+        cond:=false;
+    END_IF
+    IF (month in[04,06,09,11] and day>30) THEN
+        cond:=false;
+    END_IF
+    IF ( month=02 and year % 4<>0 and day>28) THEN
+        cond:=false;
+    END_IF
+    IF (month=02 and year % 4 =0 and day>29) THEN
+        cond:=false;
+    END_IF
+    UNTIL (cond=true);
+    IF (cond=false) THEN
+        write ('date invalide')
+    END_IF
+    SWITCH (month) DO
+        case 01 : chaine:="january"
+        case 02 : chaine:="february"
+        case 03 : chaine:="march"
+        case 04 : chaine:="april"
+        default : "not a month"
+    END_SWITCH
+    write(day,chaine,year+2000);
+END
